@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Employee;
+use App\Models\Company;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -20,6 +21,10 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('password')
         ]);
 
-        Employee::factory(30)->create();
+        Company::factory(10)->create()->each(function ($company) {
+            Employee::factory(100)->create([
+                'company_id' => $company->id
+            ]);
+        });
     }
 }

@@ -17,7 +17,6 @@ class EmployeeFactory extends Factory
         return [
             'first_name' => $this->faker->firstName(),
             'last_name' => $this->faker->lastName(),
-            'company_id' => Company::factory(),
             'company' => $this->faker->word(),
             'email' => $this->faker->email(),
             'phone_number' => $this->faker->phoneNumber(),
