@@ -16,8 +16,8 @@ class CompanyFactory extends Factory
         return [
             'name' => $this->faker->word(),
             'email' => $this->faker->email(),
-            'logo' => 'http://lorempixel.com/400/200/abstract/',
-            'website' => $this->faker->url(),
+            'logo' => 'logos\logoipsum-logo-8.svg',
+            'website' => $this->faker->domainName(),
         ];
     }
 }
