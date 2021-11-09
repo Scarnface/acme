@@ -7,7 +7,7 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-.custom-main {
+.main-custom {
     max-width: 1140px;
     margin-left: auto;
     margin-right: auto;
@@ -18,6 +18,14 @@
     font-size: 2rem;
     font-weight: bold;
     color: $brand-red;
+    &:hover {
+        color: $brand-grey;
+        text-decoration: none;
+    }
+}
+
+.card-custom {
+    width: 31%;
 }
 
 .dashboard-button {

@@ -82,7 +82,7 @@
                 </div>
             </nav>
 
-            <main class="custom-main py-4">
+            <main class="main-custom py-4">
                 @yield('content')
             </main>
         </div>

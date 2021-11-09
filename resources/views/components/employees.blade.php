@@ -8,9 +8,11 @@
             <x-employee :employee="$employee"></x-employee>
         @endforeach
     </div>
+
     <div class="mb-20">
         {{ $employees->links() }}
     </div>
+
     <a class="text-lg text-red-800 hover:text-gray-500 mt-10" href="{{ route('home') }}">Go Back</a>
 
 @endsection

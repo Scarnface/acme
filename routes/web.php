@@ -21,5 +21,7 @@ Auth::routes(['register' => false]);
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/companies', [CompaniesController::class, 'show'])->name('companies');
-Route::get('/employees', [EmployeesController::class, 'show'])->name('employees');
+Route::get('companies', [CompaniesController::class, 'index'])->name('companies');
+Route::get('companies/{company:name}', [CompaniesController::class, 'show'])->name('company');
+
+Route::get('employees', [EmployeesController::class, 'show'])->name('employees');
