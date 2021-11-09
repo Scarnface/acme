@@ -1,5 +1,5 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);
 @charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Nunito);
 /*!
  * Bootstrap v4.6.1 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
@@ -4484,7 +4484,7 @@ input[type=button].btn-block {
     margin-left: -15px;
   }
   .card-deck .card {
-    flex: 1 0 0%;
+    flex: 1 0 0;
     margin-right: 15px;
     margin-bottom: 0;
     margin-left: 15px;
@@ -4500,7 +4500,7 @@ input[type=button].btn-block {
     flex-flow: row wrap;
   }
   .card-group > .card {
-    flex: 1 0 0%;
+    flex: 1 0 0;
     margin-bottom: 0;
   }
   .card-group > .card + .card {
@@ -10019,6 +10019,12 @@ h3 {
     border-color: #dee2e6;
   }
 }
+.custom-main {
+  max-width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .navbar-custom {
   font-family: "Acme", serif;
   font-size: 2rem;

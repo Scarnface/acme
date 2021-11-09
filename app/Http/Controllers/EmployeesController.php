@@ -9,7 +9,7 @@ class EmployeesController extends Controller
     function show()
     {
         return view('components.employees', [
-            'employees' => Employee::paginate(9)
+            'employees' => Employee::paginate(10)
         ]);
     }
 }

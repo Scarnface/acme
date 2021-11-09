@@ -7,6 +7,12 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+.custom-main {
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .navbar-custom {
     font-family: $font-family-serif;
     font-size: 2rem;
