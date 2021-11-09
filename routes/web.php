@@ -6,27 +6,16 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Auth::routes(['register' => false]);
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('companies', [CompaniesController::class, 'index'])->name('companies');
-Route::get('companies/create', [CompaniesController::class, 'create'])->name('company.create');
-Route::post('companies/store', [CompaniesController::class, 'store'])->name('company.store');
-Route::get('companies/{company:name}', [CompaniesController::class, 'show'])->name('company');
-Route::put('companies/update/{company:name}', [CompaniesController::class, 'update'])->name('company.update');
-Route::delete('companies/update/{company:name}', [CompaniesController::class, 'delete'])->name('company.delete');
+Route::get('companies', [CompaniesController::class, 'index'])->middleware('auth')->name('companies');
+Route::get('companies/create', [CompaniesController::class, 'create'])->middleware('admin')->name('company.create');
+Route::post('companies/store', [CompaniesController::class, 'store'])->middleware('admin')->name('company.store');
+Route::get('companies/{company:name}', [CompaniesController::class, 'show'])->middleware('auth')->name('company.show');
+Route::put('companies/update/{company:name}', [CompaniesController::class, 'update'])->middleware('admin')->name('company.update');
+Route::delete('companies/delete/{company:name}', [CompaniesController::class, 'delete'])->middleware('admin')->name('company.delete');
 
 Route::get('employees', [EmployeesController::class, 'show'])->name('employees');
 

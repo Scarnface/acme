@@ -17,9 +17,9 @@ class CompaniesController extends Controller
 
     public function show($name)
     {
-        $company = DB::table('companies')->where('name', $name)->paginate(1);
         return view('components.companies', [
-            'companies' => $company
+            'companies' => DB::table('companies')->where('name', $name)->get(),
+            'employees' => DB::table('employees')->where('company', $name)->paginate(10)
         ]);
     }
 

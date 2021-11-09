@@ -1,6 +1,6 @@
 @props(['company'])
 
-<div class="card card-custom">
+<div class="card card-custom mx-4">
     <div class="card-header font-bold text-2xl">
         <a href="/companies/{{ $company->name }}"
            class="text-red-800 hover:text-gray-500">{{ ucwords($company->name) }}</a>
