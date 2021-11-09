@@ -22,11 +22,11 @@ Auth::routes(['register' => false]);
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('companies', [CompaniesController::class, 'index'])->name('companies');
+Route::get('companies/create', [CompaniesController::class, 'create'])->name('company.create');
+Route::post('companies/store', [CompaniesController::class, 'store'])->name('company.store');
 Route::get('companies/{company:name}', [CompaniesController::class, 'show'])->name('company');
 Route::put('companies/update/{company:name}', [CompaniesController::class, 'update'])->name('company.update');
 Route::delete('companies/update/{company:name}', [CompaniesController::class, 'delete'])->name('company.delete');
-Route::get('companies/create', [CompaniesController::class, 'create'])->name('company.create');
-Route::post('companies/store', [CompaniesController::class, 'store'])->name('company.store');
 
 Route::get('employees', [EmployeesController::class, 'show'])->name('employees');
 
