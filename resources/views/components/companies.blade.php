@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    @if( $companies->count()  === 1)
+    @if( $companies->count() === 1)
         <h1 class="text-2xl font-bold text-center mt-6 mb-10">Company</h1>
         <div class="flex justify-content-center mb-6">
     @else

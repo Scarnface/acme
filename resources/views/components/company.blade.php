@@ -2,7 +2,8 @@
 
 <div class="card card-custom">
     <div class="card-header font-bold text-2xl">
-        {{ ucwords($company->name) }}
+        <a href="/companies/{{ $company->name }}"
+           class="text-red-800 hover:text-gray-500">{{ ucwords($company->name) }}</a>
         <a href="#" class="float-right text-xs text-red-800 hover:text-gray-500">EDIT</a>
     </div>
     <div class="card-body flex flex-wrap justify-content-center align-content-center w-full">
