@@ -4,7 +4,7 @@
   <x-panel class="max-w-lg mx-auto mt-10">
     <section class="px-6 py-8">
       <h1 class="text-lg text-center font-bold mb-6">Create New Company</h1>
-      <form method="POST" action="{{ url('/companies/create') }}" enctype="multipart/form-data">
+      <form method="POST" action="{{ url('/companies/store') }}" enctype="multipart/form-data">
         @csrf
 
         <x-form.input name="name"/>

@@ -32,7 +32,7 @@ class CompaniesController extends Controller
     {
         $attributes = request()->validate([
             'name' => 'required',
-            'email' => 'required',
+            'email' => ['required', 'email'],
             'logo' => ['required', 'image'],
             'website' => 'required',
         ]);
