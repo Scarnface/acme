@@ -10,14 +10,43 @@ Auth::routes(['register' => false]);
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('companies', [CompaniesController::class, 'index'])->middleware('auth')->name('companies');
-Route::get('companies/create', [CompaniesController::class, 'create'])->middleware('admin')->name('company.create');
-Route::post('companies/store', [CompaniesController::class, 'store'])->middleware('admin')->name('company.store');
-Route::get('companies/{company:name}', [CompaniesController::class, 'show'])->middleware('auth')->name('company.show');
-Route::put('companies/update/{company:name}', [CompaniesController::class, 'update'])->middleware('admin')->name('company.update');
-Route::delete('companies/delete/{company:name}', [CompaniesController::class, 'delete'])->middleware('admin')->name('company.delete');
+Route::get('companies', [CompaniesController::class, 'index'])
+    ->middleware('auth')
+    ->name('companies');
+Route::get('companies/create', [CompaniesController::class, 'create'])
+    ->middleware('admin')
+    ->name('company.create');
+Route::post('companies/store', [CompaniesController::class, 'store'])
+    ->middleware('admin')
+    ->name('company.store');
+Route::get('companies/{company:name}', [CompaniesController::class, 'show'])
+    ->middleware('auth')
+    ->name('company.show');
+Route::put('companies/update/{company:id}', [CompaniesController::class, 'update'])
+    ->middleware('admin')
+    ->name('company.update');
+Route::delete('companies/delete/{company:id}', [CompaniesController::class, 'destroy'])
+    ->middleware('admin')
+    ->name('company.destroy');
 
-Route::get('employees', [EmployeesController::class, 'show'])->name('employees');
+Route::get('employees', [EmployeesController::class, 'index'])
+    ->middleware('auth')
+    ->name('employees');
+Route::get('employees/create', [EmployeesController::class, 'create'])
+    ->middleware('admin')
+    ->name('employee.create');
+Route::post('employees/store', [EmployeesController::class, 'store'])
+    ->middleware('admin')
+    ->name('employee.store');
+Route::get('employees/{employee:name}', [EmployeesController::class, 'show'])
+    ->middleware('auth')
+    ->name('employee.show');
+Route::put('employees/update/{employee:id}', [EmployeesController::class, 'update'])
+    ->middleware('admin')
+    ->name('employee.update');
+Route::delete('employees/delete/{employee:id}', [EmployeesController::class, 'destroy'])
+    ->middleware('admin')
+    ->name('employee.destroy');
 
 //Method Spoofing
 //

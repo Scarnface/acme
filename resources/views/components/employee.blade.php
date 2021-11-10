@@ -1,10 +1,23 @@
 @props(['employee'])
 
 <div class="card col-span-6">
-    <div class="card-header font-bold text-xl">
+    <div class="card-header flex font-bold text-xl">
         {{ ucwords($employee->first_name) . ' ' . ucwords($employee->last_name) }}
-        <a href="#" class="float-right text-xs text-red-800 hover:text-gray-500">EDIT</a>
+        <div class="flex ml-auto">
+            <form action="{{ route('employee.update', $employee->id)}}" method="post">
+                @method('PUT')
+                @csrf
+                <input class="btn btn-dark mr-6" type="submit" value="EDIT" />
+            </form>
+            <form action="{{ route('employee.destroy', $employee->id)}}" method="post">
+                @method('DELETE')
+                @csrf
+                <input class="btn btn-dark" type="submit" value="DELETE" />
+            </form>
+        </div>
+
     </div>
+
     <div class="card-body flex justify-content-center align-items-center-center w-full">
         <div class="flex align-items-center justify-content-center w-full">
             <i class="fi-cnluhl-factory-window text-2xl mr-4"></i>

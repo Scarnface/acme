@@ -32,15 +32,21 @@ class CompaniesController extends Controller
     {
         $attributes = request()->validate([
             'name' => 'required',
-            'email' => ['required', 'email'],
+            'email' => ['required', 'email', 'unique:companies'],
             'logo' => ['required', 'image'],
-            'website' => 'required',
+            'website' => ['required', 'unique:companies']
         ]);
 
         $attributes['logo'] = request()->file('logo')->store('logos');
 
         Company::create($attributes);
 
+        return redirect('/');
+    }
+
+    public function destroy($id)
+    {
+        DB::table('companies')->delete($id);
         return redirect('/');
     }
 }

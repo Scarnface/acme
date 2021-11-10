@@ -4,9 +4,9 @@
     <div class="card-header font-bold text-2xl">
         <a href="/companies/{{ $company->name }}"
            class="text-red-800 hover:text-gray-500">{{ ucwords($company->name) }}</a>
-        <a href="#" class="float-right text-xs text-red-800 hover:text-gray-500">EDIT</a>
     </div>
-    <div class="card-body flex flex-wrap justify-content-center align-content-center w-full">
+
+    <div class="card-body flex flex-wrap justify-content-center align-content-center w-full pb-4">
         <div class="flex justify-content-center w-full mb-6">
             <img src="{{ asset('storage/' . $company->logo) }}" alt="{{ ucwords($company->name) }} Logo" width="300"/>
         </div>
@@ -18,5 +18,18 @@
             <i class="fi-xwluxl-envelope-wide text-2xl mr-4"></i>
             <a href="mailto:{{ $company->email }}" class="dashboard-button">{{ $company->email }}</a>
         </div>
+    </div>
+
+    <div class="flex justify-content-center">
+        <form action="{{ route('company.update', $company->id)}}" method="post">
+            @method('PUT')
+            @csrf
+            <input class="btn btn-dark mb-4 mr-6" type="submit" value="EDIT" />
+        </form>
+        <form action="{{ route('company.destroy', $company->id)}}" method="post">
+            @method('DELETE')
+            @csrf
+            <input class="btn btn-dark mb-4" type="submit" value="DELETE" />
+        </form>
     </div>
 </div>
