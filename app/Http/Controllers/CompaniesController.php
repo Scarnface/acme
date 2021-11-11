@@ -12,7 +12,8 @@ class CompaniesController extends Controller
     function index()
     {
         return view('components.companies', [
-            'companies' => Company::paginate(3)
+            'companies' => Company::paginate(3),
+            'employees' => collect()
         ]);
     }
 
@@ -59,12 +60,12 @@ class CompaniesController extends Controller
             Company::create($attributes);
         }
 
-        return redirect('/');
+        return redirect('/')->with('success', 'Success!');
     }
 
     public function destroy($id)
     {
         DB::table('companies')->delete($id);
-        return redirect('/');
+        return redirect('/')->with('success', 'Success!');
     }
 }

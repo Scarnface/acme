@@ -57,12 +57,12 @@ class EmployeesController extends Controller
             Employee::create($attributes);
         }
 
-        return redirect('/');
+        return redirect('/')->with('success', 'Success!');
     }
 
     public function destroy($id)
     {
         DB::table('employees')->delete($id);
-        return redirect('/');
+        return redirect('/')->with('success', 'Success!');
     }
 }

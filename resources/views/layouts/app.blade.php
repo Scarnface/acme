@@ -87,5 +87,6 @@
                 @yield('content')
             </main>
         </div>
+        <x-flash/>
     </body>
 </html>

@@ -11,15 +11,17 @@
         @endforeach
         </div>
 
-        <div class="lg:grid lg:grid-cols-6">
-        @foreach ($employees as $employee)
-            <x-employee :employee="$employee"></x-employee>
-        @endforeach
-        </div>
+        @if( $employees->isNotEmpty() )
+            <div class="lg:grid lg:grid-cols-6">
+                @foreach ($employees as $employee)
+                    <x-employee :employee="$employee"></x-employee>
+                @endforeach
+            </div>
 
-        <div class="mb-20">
-            {{ $employees->links() }}
-        </div>
+            <div class="mb-20">
+                {{ $employees->links() }}
+            </div>
+        @endif
     @else
         <h1 class="text-3xl font-bold text-center mt-6 mb-6">COMPANIES</h1>
 
