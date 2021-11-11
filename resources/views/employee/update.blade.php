@@ -3,14 +3,12 @@
 @section('content')
     <x-panel class="max-w-lg mx-auto mt-10">
         <section class="px-6 py-8">
-            <h1 class="text-lg text-center font-bold mb-6">Create New Employee</h1>
-            <form method="POST" action="{{ route('employee.store') }}" enctype="multipart/form-data">
+            <h1 class="text-lg text-center font-bold mb-6">Edit Employee</h1>
+            <form method="POST" action="{{ route('employee.store', $employees->id)}}" enctype="multipart/form-data">
                 @csrf
 
                 <x-form.input name="FirstName"/>
                 <x-form.input name="LastName"/>
-                <x-form.input name="CompanyID"/>
-                <x-form.input name="Company"/>  {{-- Make dropdown then autoset compnay_id from selection --}}
                 <x-form.input name="Email"/>
                 <x-form.input name="PhoneNumber"/>
 

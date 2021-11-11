@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Company;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
+use Illuminate\Http\Request;
 
 class CompaniesController extends Controller
 {
@@ -28,18 +29,35 @@ class CompaniesController extends Controller
         return view('company.create');
     }
 
-    public function store()
+    public function update($id)
     {
-        $attributes = request()->validate([
-            'name' => 'required',
-            'email' => ['required', 'email', 'unique:companies'],
-            'logo' => ['required', 'image'],
-            'website' => ['required', 'unique:companies']
+        return view('company.update', [
+            'companies' => DB::table('companies')->where('id', $id)->first(),
         ]);
+    }
 
-        $attributes['logo'] = request()->file('logo')->store('logos');
+    public function store(Request $request, $id = NULL)
+    {
+        $entry = Company::find($id);
+        if(!is_null($entry)){
+            $entry->update([
+                'name' =>  $request->input('name', $entry->name),
+                'email' => $request->input('email', $entry->password),
+                'logo' => request()->file('logo')->store('logos'),
+                'website' => $request->input('website', $entry->website),
+            ]);
+        } else {
+            $attributes = request()->validate([
+                'name' => 'required',
+                'email' => ['required', 'email', 'unique:companies'],
+                'logo' => ['required', 'image'],
+                'website' => ['required', 'unique:companies']
+            ]);
 
-        Company::create($attributes);
+            $attributes['logo'] = request()->file('logo')->store('logos');
+
+            Company::create($attributes);
+        }
 
         return redirect('/');
     }
