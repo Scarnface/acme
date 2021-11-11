@@ -7,10 +7,10 @@
             <form method="POST" action="{{ route('company.store', $companies->id)}}" enctype="multipart/form-data">
                 @csrf
 
-                <x-form.input name="name"/>
-                <x-form.input name="email"/>
-                <x-form.input name="logo" type="file"/>
-                <x-form.input name="website"/>
+                <x-form.input name="name" value="{{ $companies->name }}" />
+                <x-form.input name="email" value="{{ $companies->email }}" />
+                <x-form.input name="logo" value="{{ $companies->logo }}" type="file" />
+                <x-form.input name="website" value="{{ $companies->website }}" />
 
                 <x-form.field>
                     <button type="submit" class="btn btn-dark">Update</button>

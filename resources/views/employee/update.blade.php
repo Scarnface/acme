@@ -7,10 +7,10 @@
             <form method="POST" action="{{ route('employee.store', $employees->id)}}" enctype="multipart/form-data">
                 @csrf
 
-                <x-form.input name="first_name"/>
-                <x-form.input name="last_name"/>
-                <x-form.input name="email"/>
-                <x-form.input name="phone_number"/>
+                <x-form.input name="first_name" value="{{ $employees->first_name }}" />
+                <x-form.input name="last_name" value="{{ $employees->last_name }}" />
+                <x-form.input name="email" value="{{ $employees->email }}" />
+                <x-form.input name="phone_number" value="{{ $employees->phone_number }}" />
 
                 <x-form.field>
                     <button type="submit" class="btn btn-dark">Update</button>

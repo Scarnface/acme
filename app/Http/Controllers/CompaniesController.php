@@ -37,15 +37,15 @@ class CompaniesController extends Controller
         ]);
     }
 
-    public function store(Request $request, $id = NULL)
+    public function store($id = NULL)
     {
         $entry = Company::find($id);
         if(!is_null($entry)){
             $entry->update([
-                'name' =>  $request->input('name', $entry->name),
-                'email' => $request->input('email', $entry->password),
+                'name' =>  request()->input('name', $entry->name),
+                'email' => request()->input('email', $entry->password),
                 'logo' => request()->file('logo')->store('logos'),
-                'website' => $request->input('website', $entry->website),
+                'website' => request()->input('website', $entry->website),
             ]);
         } else {
             $attributes = request()->validate([

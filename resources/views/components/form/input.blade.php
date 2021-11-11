@@ -1,4 +1,4 @@
-@props(['name', 'type' => 'text'])
+@props(['name', 'value', 'type' => 'text'])
 
 <x-form.field>
     <x-form.label name="{{ str_replace('_', ' ', $name) }}"/>
@@ -7,7 +7,7 @@
            type="{{ $type }}"
            name="{{ $name }}"
            id="{{ $name }}"
-           value="{{ old($name) }}"
+           value="{{ old($value) ? old($value) : $value}}"
            required
     >
 </x-form.field>
