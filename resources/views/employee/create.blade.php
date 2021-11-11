@@ -7,12 +7,12 @@
             <form method="POST" action="{{ route('employee.store') }}" enctype="multipart/form-data">
                 @csrf
 
-                <x-form.input name="FirstName"/>
-                <x-form.input name="LastName"/>
-                <x-form.input name="CompanyID"/>
-                <x-form.input name="Company"/>  {{-- Make dropdown then autoset compnay_id from selection --}}
-                <x-form.input name="Email"/>
-                <x-form.input name="PhoneNumber"/>
+                <x-form.input name="first_name"/>
+                <x-form.input name="last_name"/>
+                <x-form.input name="company_id"/>
+                <x-form.input name="company"/>  {{-- Make dropdown then autoset compnay_id from selection --}}
+                <x-form.input name="email"/>
+                <x-form.input name="phone_number"/>
 
                 <x-form.field>
                     <button type="submit" class="btn btn-dark">Create</button>

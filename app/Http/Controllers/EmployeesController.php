@@ -39,10 +39,10 @@ class EmployeesController extends Controller
         $entry = Employee::find($id);
         if(!is_null($entry)){
             $entry->update([
-                'first_name' =>  $request->input('FirstName', $entry->first_name),
-                'last_name' =>  $request->input('LastName', $entry->last_name),
+                'first_name' =>  $request->input('first_name', $entry->first_name),
+                'last_name' =>  $request->input('last_name', $entry->last_name),
                 'email' => $request->input('Email', $entry->email),
-                'phone_number' => $request->input('PhoneNumber', $entry->phone_number),
+                'phone_number' => $request->input('phone_number', $entry->phone_number),
             ]);
         } else {
             $attributes = request()->validate([
