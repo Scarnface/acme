@@ -7,15 +7,15 @@
             <form method="POST" action="{{ route('employee.store') }}" enctype="multipart/form-data">
                 @csrf
 
-                <x-form.input name="first_name"/>
-                <x-form.input name="last_name"/>
-                <x-form.input name="company_id"/>
-                <x-form.input name="company"/>  {{-- Make dropdown then autoset compnay_id from selection --}}
-                <x-form.input name="email"/>
-                <x-form.input name="phone_number"/>
+                <x-form.input name="First Name"/>
+                <x-form.input name="Last Name"/>
+                <x-form.input name="Company ID"/>
+                <x-form.input name="Company"/>  {{-- Make dropdown then autoset compnay_id from selection --}}
+                <x-form.input name="Email"/>
+                <x-form.input name="Phone Number"/>
 
                 <x-form.field>
-                    <button type="submit" class="dashboard-button">Create</button>
+                    <button type="submit" class="btn btn-dark">Create</button>
                 </x-form.field>
 
                 @if ($errors->any())

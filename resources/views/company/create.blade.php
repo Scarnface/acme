@@ -13,7 +13,7 @@
         <x-form.input name="website"/>
 
         <x-form.field>
-            <button type="submit" class="dashboard-button">Create</button>
+            <button type="submit" class="btn btn-dark">Create</button>
         </x-form.field>
 
         @if ($errors->any())
