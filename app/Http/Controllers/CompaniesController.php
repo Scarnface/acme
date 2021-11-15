@@ -4,17 +4,28 @@ namespace App\Http\Controllers;
 
 use App\Models\Company;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Validation\Rule;
-use Illuminate\Http\Request;
 
 class CompaniesController extends Controller
 {
     function index()
     {
-        return view('components.companies', [
-            'companies' => Company::paginate(3),
-            'employees' => collect()
-        ]);
+        $companies = Company::latest();
+
+        if (request('search')) {
+            $companies
+                ->where('name', 'like', '%' . request('search') . '%');
+
+            return view('components.companies', [
+                'companies' => $companies->paginate(3),
+                'employees' => collect()
+            ]);
+        }
+        else {
+            return view('components.companies', [
+                'companies' => Company::paginate(3),
+                'employees' => collect()
+            ]);
+        }
     }
 
     public function show($name)

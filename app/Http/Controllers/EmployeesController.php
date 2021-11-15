@@ -10,9 +10,22 @@ class EmployeesController extends Controller
 {
     function index()
     {
-        return view('components.employees', [
-            'employees' => Employee::paginate(10)
-        ]);
+        $employees = Employee::latest();
+
+        if (request('search')) {
+            $employees
+                ->where('first_name', 'like', '%' . request('search') . '%')
+                ->orWhere('last_name', 'like', '%' . request('search') . '%');
+
+            return view('components.employees', [
+                'employees' => $employees->paginate(10),
+            ]);
+        }
+        else {
+            return view('components.employees', [
+                'employees' => Employee::paginate(10)
+            ]);
+        }
     }
 
     public function show($id)

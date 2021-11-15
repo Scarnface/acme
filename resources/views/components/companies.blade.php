@@ -3,8 +3,6 @@
 @section('content')
 
     @if( $companies->count() === 1)
-        <x-company-toolbar></x-company-toolbar>
-
         <div class="flex justify-content-center mb-6">
         @foreach ($companies as $company)
             <x-company :company="$company"></x-company>
