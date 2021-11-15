@@ -29,7 +29,7 @@ Route::get('companies/{company:name}', [CompaniesController::class, 'show'])
     ->middleware('auth')
     ->name('company.show');
 
-Route::put('companies/update/{company:id}', [CompaniesController::class, 'update'])
+Route::post('companies/update/{company:id}', [CompaniesController::class, 'update'])
     ->middleware('admin')
     ->name('company.update');
 
@@ -56,7 +56,7 @@ Route::get('employees/{employee:name}', [EmployeesController::class, 'show'])
     ->middleware('auth')
     ->name('employee.show');
 
-Route::put('employees/update/{employee:id}', [EmployeesController::class, 'update'])
+Route::post('employees/update/{employee:id}', [EmployeesController::class, 'update'])
     ->middleware('admin')
     ->name('employee.update');
 

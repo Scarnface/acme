@@ -5,7 +5,6 @@
         {{ ucwords($employee->first_name) . ' ' . ucwords($employee->last_name) }}
         <div class="flex ml-auto">
             <form action="{{ route('employee.update', $employee->id)}}" method="post">
-                @method('PUT')
                 @csrf
                 <input class="btn btn-dark mr-6" type="submit" value="EDIT" />
             </form>

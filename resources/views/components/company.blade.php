@@ -22,7 +22,6 @@
 
     <div class="flex justify-content-center">
         <form action="{{ route('company.update', $company->id)}}" method="post">
-            @method('PUT')
             @csrf
             <input class="btn btn-dark mb-4 mr-6" type="submit" value="EDIT" />
         </form>
