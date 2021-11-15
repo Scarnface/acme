@@ -15,10 +15,10 @@ class EmployeesController extends Controller
         ]);
     }
 
-    public function show($name)
+    public function show($id)
     {
         return view('components.employees', [
-            'employees' => DB::table('employees')->where('company', $name)->get()
+            'employees' => DB::table('employees')->where('id', $id)->get()
         ]);
     }
 

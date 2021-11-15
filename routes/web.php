@@ -52,7 +52,7 @@ Route::post('employees/store/{employee:id?}', [EmployeesController::class, 'stor
     ->middleware('admin')
     ->name('employee.store');
 
-Route::get('employees/{employee:name}', [EmployeesController::class, 'show'])
+Route::get('employees/{employee:id}', [EmployeesController::class, 'show'])
     ->middleware('auth')
     ->name('employee.show');
 

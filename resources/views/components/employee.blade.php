@@ -2,7 +2,11 @@
 
 <div class="card col-span-6">
     <div class="card-header flex font-bold text-xl">
-        {{ ucwords($employee->first_name) . ' ' . ucwords($employee->last_name) }}
+        <a href="/employees/{{ $employee->id }}"
+           class="text-red-800 hover:text-gray-500">
+            {{ ucwords($employee->first_name) . ' ' . ucwords($employee->last_name) }}
+        </a>
+
         <div class="flex ml-auto">
             <form action="{{ route('employee.update', $employee->id)}}" method="post">
                 @csrf
