@@ -1,4 +1,4 @@
-@props(['name', 'value', 'type' => 'text'])
+@props(['name', 'value' => '', 'type' => 'text'])
 
 <x-form.field>
     <x-form.label name="{{ str_replace('_', ' ', $name) }}"/>
