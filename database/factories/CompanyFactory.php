@@ -14,10 +14,10 @@ class CompanyFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->word(),
-            'email' => $this->faker->email(),
+            'name' => $this->faker->unique()->word(),
+            'email' => $this->faker->unique()->email(),
             'logo' => 'logos\logoipsum-logo-8.svg',
-            'website' => $this->faker->domainName(),
+            'website' => $this->faker->unique()->domainName(),
         ];
     }
 }

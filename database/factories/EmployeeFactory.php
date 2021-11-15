@@ -18,8 +18,8 @@ class EmployeeFactory extends Factory
             'first_name' => $this->faker->firstName(),
             'last_name' => $this->faker->lastName(),
             'company' => $this->faker->word(),
-            'email' => $this->faker->email(),
-            'phone_number' => $this->faker->phoneNumber(),
+            'email' => $this->faker->unique()->email(),
+            'phone_number' => $this->faker->unique()->phoneNumber(),
         ];
     }
 }
