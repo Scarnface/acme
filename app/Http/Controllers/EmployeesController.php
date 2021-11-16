@@ -11,15 +11,13 @@ class EmployeesController extends Controller
 {
     function index()
     {
-        $employees = Employee::latest();
-
         if (request('search')) {
-            $employees
-                ->where('first_name', 'like', '%' . request('search') . '%')
-                ->orWhere('last_name', 'like', '%' . request('search') . '%');
-
             return view('components.employees', [
-                'employees' => $employees->paginate(10),
+                'employees' => Employee::where('first_name', 'like', '%' . request('search') . '%')
+                    ->orWhere('last_name', 'like', '%' . request('search') . '%')
+                    ->orderBy('first_name', 'asc')
+                    ->orderBy('last_name', 'asc')
+                    ->paginate(10),
             ]);
         }
         else {
@@ -45,7 +43,8 @@ class EmployeesController extends Controller
     public function show(Employee $employee)
     {
         return view('components.employees', [
-            'employees' => DB::table('employees')->where('id', $employee->id)->get()
+            'employees' => Employee::where('id', '=', $employee->id)
+                ->paginate(3),
         ]);
     }
 

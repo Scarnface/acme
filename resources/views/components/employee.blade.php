@@ -2,7 +2,7 @@
 
 <div class="card col-span-6">
     <div class="card-header flex font-bold text-xl">
-        <a href="/employees/{{ $employee->id }}"
+        <a href="{{ route('employee.show', $employee) }}"
            class="text-red-800 hover:text-gray-500">
             {{ ucwords($employee->first_name) . ' ' . ucwords($employee->last_name) }}
         </a>

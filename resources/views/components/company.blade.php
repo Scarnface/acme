@@ -2,7 +2,7 @@
 
 <div class="card card-custom mx-4">
     <div class="card-header font-bold text-2xl">
-        <a href="/companies/{{ $company->name }}"
+        <a href="{{ route('company.show', $company) }}"
            class="text-red-800 hover:text-gray-500">{{ ucwords($company->name) }}</a>
     </div>
 
@@ -21,11 +21,11 @@
     </div>
 
     <div class="flex justify-content-center">
-        <form action="{{ route('company.edit', $company)}}" method="GET">
+        <form action="{{ route('company.edit', $company) }}" method="GET">
             @csrf
             <input class="btn btn-dark mb-4 mr-6" type="submit" value="EDIT" />
         </form>
-        <form action="{{ route('company.destroy', $company)}}" method="POST">
+        <form action="{{ route('company.destroy', $company) }}" method="POST">
             @method('DELETE')
             @csrf
             <input class="btn btn-dark mb-4" type="submit" value="DELETE" />
