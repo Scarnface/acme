@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CompanyRequest;
 use App\Models\Company;
 use Illuminate\Support\Facades\DB;
 
@@ -28,12 +29,13 @@ class CompaniesController extends Controller
         }
     }
 
-    public function show($name)
+    public function store(CompanyRequest $request, Company $company)
     {
-        return view('components.companies', [
-            'companies' => DB::table('companies')->where('name', $name)->get(),
-            'employees' => DB::table('employees')->where('company', $name)->paginate(10)
-        ]);
+        $validatedData = $request->validated();
+        $validatedData['logo'] = request()->file('logo')->store('logos');
+        Company::create($validatedData);
+
+        return redirect('/')->with('success', 'Success!');
     }
 
     public function create()
@@ -41,42 +43,33 @@ class CompaniesController extends Controller
         return view('company.create');
     }
 
-    public function update($id)
+    public function show(Company $company)
     {
-        return view('company.update', [
-            'companies' => DB::table('companies')->where('id', $id)->first(),
+        return view('components.companies', [
+            'companies' => DB::table('companies')->where('name', $company->name)->get(),
+            'employees' => DB::table('employees')->where('company', $company->name)->paginate(10)
         ]);
     }
 
-    public function store($id = NULL)
+    public function update(CompanyRequest $request, Company $company)
     {
-        $entry = Company::find($id);
-        if(!is_null($entry)){
-            $entry->update([
-                'name' =>  request()->input('name', $entry->name),
-                'email' => request()->input('email', $entry->password),
-                'logo' => request()->file('logo')->store('logos'),
-                'website' => request()->input('website', $entry->website),
-            ]);
-        } else {
-            $attributes = request()->validate([
-                'name' => 'required',
-                'email' => ['required', 'email', 'unique:companies'],
-                'logo' => ['required', 'image'],
-                'website' => ['required', 'unique:companies']
-            ]);
-
-            $attributes['logo'] = request()->file('logo')->store('logos');
-
-            Company::create($attributes);
-        }
+        $validatedData = $request->validated();
+        $validatedData['logo'] = request()->file('logo')->store('logos');
+        Company::update($validatedData);
 
         return redirect('/')->with('success', 'Success!');
     }
 
-    public function destroy($id)
+    public function destroy(Company $company)
     {
-        DB::table('companies')->delete($id);
+        DB::table('companies')->delete($company->id);
         return redirect('/')->with('success', 'Success!');
+    }
+
+    public function edit(Company $company)
+    {
+        return view('company.edit', [
+            'companies' => DB::table('companies')->where('id', $company->id)->first(),
+        ]);
     }
 }

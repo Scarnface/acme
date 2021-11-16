@@ -21,11 +21,11 @@
     </div>
 
     <div class="flex justify-content-center">
-        <form action="{{ route('company.update', $company->id)}}" method="post">
+        <form action="{{ route('company.edit', $company)}}" method="POST">
             @csrf
             <input class="btn btn-dark mb-4 mr-6" type="submit" value="EDIT" />
         </form>
-        <form action="{{ route('company.destroy', $company->id)}}" method="post">
+        <form action="{{ route('company.destroy', $company)}}" method="POST">
             @method('DELETE')
             @csrf
             <input class="btn btn-dark mb-4" type="submit" value="DELETE" />

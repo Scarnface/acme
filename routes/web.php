@@ -17,25 +17,29 @@ Route::get('companies', [CompaniesController::class, 'index'])
     ->middleware('auth')
     ->name('companies');
 
+Route::post('companies', [CompaniesController::class, 'store'])
+    ->middleware('admin')
+    ->name('company.store');
+
 Route::get('companies/create', [CompaniesController::class, 'create'])
     ->middleware('admin')
     ->name('company.create');
 
-Route::post('companies/store/{company:id?}', [CompaniesController::class, 'store'])
-    ->middleware('admin')
-    ->name('company.store');
-
-Route::get('companies/{company:name}', [CompaniesController::class, 'show'])
+Route::get('companies/{company}', [CompaniesController::class, 'show'])
     ->middleware('auth')
     ->name('company.show');
 
-Route::post('companies/update/{company:id}', [CompaniesController::class, 'update'])
+Route::put('companies/{company}', [CompaniesController::class, 'update'])
     ->middleware('admin')
     ->name('company.update');
 
-Route::delete('companies/delete/{company:id}', [CompaniesController::class, 'destroy'])
+Route::delete('companies/{company}', [CompaniesController::class, 'destroy'])
     ->middleware('admin')
     ->name('company.destroy');
+
+Route::post('companies/{company}/edit', [CompaniesController::class, 'update'])
+    ->middleware('admin')
+    ->name('company.edit');
 
 //----------------------------------------------------------------------------------------------------------------------
 // EMPLOYEES
@@ -44,22 +48,26 @@ Route::get('employees', [EmployeesController::class, 'index'])
     ->middleware('auth')
     ->name('employees');
 
+Route::post('employees', [EmployeesController::class, 'store'])
+    ->middleware('admin')
+    ->name('employee.store');
+
 Route::get('employees/create', [EmployeesController::class, 'create'])
     ->middleware('admin')
     ->name('employee.create');
 
-Route::post('employees/store/{employee:id?}', [EmployeesController::class, 'store'])
-    ->middleware('admin')
-    ->name('employee.store');
-
-Route::get('employees/{employee:id}', [EmployeesController::class, 'show'])
+Route::get('employees/{employee}', [EmployeesController::class, 'show'])
     ->middleware('auth')
     ->name('employee.show');
 
-Route::post('employees/update/{employee:id}', [EmployeesController::class, 'update'])
+Route::put('employees/{employee}', [EmployeesController::class, 'update'])
     ->middleware('admin')
     ->name('employee.update');
 
-Route::delete('employees/delete/{employee:id}', [EmployeesController::class, 'destroy'])
+Route::delete('employees/{employee}', [EmployeesController::class, 'destroy'])
     ->middleware('admin')
     ->name('employee.destroy');
+
+Route::post('employees/{employee}/edit', [EmployeesController::class, 'update'])
+    ->middleware('admin')
+    ->name('employee.edit');

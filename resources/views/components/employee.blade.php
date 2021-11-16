@@ -8,11 +8,11 @@
         </a>
 
         <div class="flex ml-auto">
-            <form action="{{ route('employee.update', $employee->id)}}" method="post">
+            <form action="{{ route('employee.edit', $employee)}}" method="POST">
                 @csrf
                 <input class="btn btn-dark mr-6" type="submit" value="EDIT" />
             </form>
-            <form action="{{ route('employee.destroy', $employee->id)}}" method="post">
+            <form action="{{ route('employee.destroy', $employee)}}" method="POST">
                 @method('DELETE')
                 @csrf
                 <input class="btn btn-dark" type="submit" value="DELETE" />
