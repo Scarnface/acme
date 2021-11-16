@@ -52,7 +52,7 @@ class EmployeesController extends Controller
     public function update(EmployeeRequest $request, Employee $employee)
     {
         $validatedData = $request->validated();
-        Employee::update($validatedData);
+        $employee->update($validatedData);
 
         return redirect('/')->with('success', 'Success!');
     }
@@ -66,7 +66,7 @@ class EmployeesController extends Controller
     public function edit(Employee $employee)
     {
         return view('employee.edit', [
-            'employees' => DB::table('employees')->where('id', $employee->id)->first(),
+            'employee' => $employee
         ]);
     }
 }

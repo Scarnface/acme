@@ -21,7 +21,7 @@
     </div>
 
     <div class="flex justify-content-center">
-        <form action="{{ route('company.edit', $company)}}" method="POST">
+        <form action="{{ route('company.edit', $company)}}" method="GET">
             @csrf
             <input class="btn btn-dark mb-4 mr-6" type="submit" value="EDIT" />
         </form>

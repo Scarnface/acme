@@ -13,7 +13,7 @@ class EmployeeRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -45,7 +45,7 @@ class EmployeeRequest extends FormRequest
             'last_name' => 'required',
             'company_id' => 'required',
             'company' => 'required',
-            'email' => 'required|email|unique:employees,email' .$this->employee()->id,
+            'email' => 'required|email|unique:employees,email,' .$this->route()->employee->id,
             'phone_number' => 'required|regex:/[0-9]{11}/'
         ];
     }

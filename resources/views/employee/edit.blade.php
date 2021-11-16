@@ -8,10 +8,10 @@
                 @method('PUT')
                 @csrf
 
-                <x-form.input name="first_name" value="{{ $employees->first_name }}" />
-                <x-form.input name="last_name" value="{{ $employees->last_name }}" />
-                <x-form.input name="email" value="{{ $employees->email }}" />
-                <x-form.input name="phone_number" value="{{ $employees->phone_number }}" />
+                <x-form.input name="first_name" value="{{ $employee->first_name }}" />
+                <x-form.input name="last_name" value="{{ $employee->last_name }}" />
+                <x-form.input name="email" value="{{ $employee->email }}" />
+                <x-form.input name="phone_number" value="{{ $employee->phone_number }}" />
 
                 <x-form.field>
                     <button type="submit" class="btn btn-dark">Update</button>

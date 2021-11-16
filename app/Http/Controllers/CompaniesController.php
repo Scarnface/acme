@@ -55,7 +55,7 @@ class CompaniesController extends Controller
     {
         $validatedData = $request->validated();
         $validatedData['logo'] = request()->file('logo')->store('logos');
-        Company::update($validatedData);
+        $company->update($validatedData);
 
         return redirect('/')->with('success', 'Success!');
     }
@@ -69,7 +69,7 @@ class CompaniesController extends Controller
     public function edit(Company $company)
     {
         return view('company.edit', [
-            'companies' => DB::table('companies')->where('id', $company->id)->first(),
+            'company' => $company
         ]);
     }
 }

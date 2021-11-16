@@ -13,7 +13,7 @@ class CompanyRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -40,9 +40,9 @@ class CompanyRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'email' => 'required|email|unique:companies,email' .$this->company()->id,
+            'email' => 'required|email|unique:companies,email,' .$this->route()->company->id,
             'logo' => 'required|image',
-            'website' => 'required|unique:companies,website' .$this->company()->id
+            'website' => 'required|unique:companies,website,'.$this->route()->company->id
         ];
     }
 }

@@ -37,7 +37,7 @@ Route::delete('companies/{company}', [CompaniesController::class, 'destroy'])
     ->middleware('admin')
     ->name('company.destroy');
 
-Route::post('companies/{company}/edit', [CompaniesController::class, 'update'])
+Route::get('companies/{company}/edit', [CompaniesController::class, 'edit'])
     ->middleware('admin')
     ->name('company.edit');
 
@@ -68,6 +68,6 @@ Route::delete('employees/{employee}', [EmployeesController::class, 'destroy'])
     ->middleware('admin')
     ->name('employee.destroy');
 
-Route::post('employees/{employee}/edit', [EmployeesController::class, 'update'])
+Route::get('employees/{employee}/edit', [EmployeesController::class, 'edit'])
     ->middleware('admin')
     ->name('employee.edit');

@@ -8,10 +8,10 @@
                 @method('PUT')
                 @csrf
 
-                <x-form.input name="name" value="{{ $companies->name }}" />
-                <x-form.input name="email" value="{{ $companies->email }}" />
-                <x-form.input name="logo" value="{{ $companies->logo }}" type="file" />
-                <x-form.input name="website" value="{{ $companies->website }}" />
+                <x-form.input name="name" value="{{ $company->name }}" />
+                <x-form.input name="email" value="{{ $company->email }}" />
+                <x-form.input name="logo" value="{{ $company->logo }}" type="file" />
+                <x-form.input name="website" value="{{ $company->website }}" />
 
                 <x-form.field>
                     <button type="submit" class="btn btn-dark">Update</button>
