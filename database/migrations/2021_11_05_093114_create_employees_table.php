@@ -14,10 +14,10 @@ class CreateEmployeesTable extends Migration
     public function up()
     {
         Schema::create('employees', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('first_name');
             $table->string('last_name');
-            $table->foreignId('company_id');//->constrained()->cascadeOnDelete();
+            $table->foreignId('company_id')->constrained()->cascadeOnDelete();
             $table->string('company');
             $table->string('email')->unique();
             $table->char('phone_number', '22')->unique();
