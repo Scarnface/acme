@@ -12,7 +12,7 @@ class EmployeesController extends Controller
     function index()
     {
         if (request('search')) {
-            return view('components.employees', [
+            return view('employee.components.employees', [
                 'employees' => Employee::where('first_name', 'like', '%' . request('search') . '%')
                     ->orWhere('last_name', 'like', '%' . request('search') . '%')
                     ->orderBy('first_name', 'asc')
@@ -21,7 +21,7 @@ class EmployeesController extends Controller
             ]);
         }
         else {
-            return view('components.employees', [
+            return view('employee.components.employees', [
                 'employees' => Employee::paginate(10)
             ]);
         }
@@ -42,7 +42,7 @@ class EmployeesController extends Controller
 
     public function show(Employee $employee)
     {
-        return view('components.employees', [
+        return view('employee.components.employees', [
             'employees' => Employee::where('id', '=', $employee->id)
                 ->paginate(3),
         ]);

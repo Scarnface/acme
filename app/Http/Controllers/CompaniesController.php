@@ -11,14 +11,14 @@ class CompaniesController extends Controller
     function index()
     {
         if (request('search')) {
-            return view('components.companies', [
+            return view('company.components.companies', [
                 'companies' => Company::where('name', 'like', '%' . request('search') . '%')
                     ->orderBy('name', 'asc')
                     ->paginate(3),
             ]);
         }
         else {
-            return view('components.companies', [
+            return view('company.components.companies', [
                 'companies' => Company::paginate(3),
             ]);
         }
@@ -40,7 +40,7 @@ class CompaniesController extends Controller
 
     public function show(Company $company)
     {
-        return view('components.companies', [
+        return view('company.components.companies', [
             'companies' => Company::where('id', '=', $company->id)
                 ->paginate(3),
         ]);

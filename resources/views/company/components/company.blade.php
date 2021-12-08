@@ -21,10 +21,9 @@
     </div>
 
     <div class="flex justify-content-center">
-        <form action="{{ route('company.edit', $company) }}" method="GET">
-            @csrf
+        <a href="{{ route('company.edit', $company) }}">
             <input class="btn btn-dark mb-4 mr-6" type="submit" value="EDIT" />
-        </form>
+        </a>
         <form action="{{ route('company.destroy', $company) }}" method="POST">
             @method('DELETE')
             @csrf

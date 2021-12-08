@@ -24,7 +24,7 @@
     <div class="card-body flex justify-content-center align-items-center-center w-full">
         <div class="flex align-items-center justify-content-center w-full">
             <i class="fi-cnluhl-factory-window text-2xl mr-4"></i>
-            <a href="/companies/{{ $employee->company }}" class="dashboard-button">{{ $employee->company }}</a>
+            <a href="/companies/{{ $employee->company_id }}" class="dashboard-button">{{ $employee->company }}</a>
         </div>
         <div class="flex align-items-center justify-content-center w-full">
             <i class="fi-xwluxl-envelope-wide text-2xl mr-4"></i>
