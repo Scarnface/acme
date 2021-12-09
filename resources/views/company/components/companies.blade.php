@@ -7,7 +7,7 @@
 
     <div class="flex flex-wrap justify-content-center mb-6">
         @foreach ($companies as $company)
-            <x-company :company="$company"></x-company>
+            @include('company.components.clist')
         @endforeach
     </div>
 

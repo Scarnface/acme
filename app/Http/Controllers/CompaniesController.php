@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CompanyRequest;
 use App\Models\Company;
-use Illuminate\Support\Facades\DB;
 
 class CompaniesController extends Controller
 {
@@ -38,12 +37,10 @@ class CompaniesController extends Controller
         return view('company.create');
     }
 
-    public function show(Company $company)
+    public function show($id)
     {
-        return view('company.components.companies', [
-            'companies' => Company::where('id', '=', $company->id)
-                ->get(),
-        ]);
+        $company = Company::find($id);
+        return view('company.components.company', compact('company'));
     }
 
     public function update(CompanyRequest $request, Company $company)
@@ -57,7 +54,7 @@ class CompaniesController extends Controller
 
     public function destroy(Company $company)
     {
-        DB::table('companies')->delete($company->id);
+        $company->delete();
         return redirect('/')->with('success', 'Success!');
     }
 

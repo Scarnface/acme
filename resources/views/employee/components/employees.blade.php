@@ -7,7 +7,7 @@
 
     <div class="lg:grid lg:grid-cols-6">
         @foreach ($employees as $employee)
-            <x-employee :employee="$employee"></x-employee>
+            @include('employee.components.elist')
         @endforeach
     </div>
 

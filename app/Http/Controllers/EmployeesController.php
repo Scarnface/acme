@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\EmployeeRequest;
 use App\Models\Employee;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class EmployeesController extends Controller
 {
@@ -40,12 +38,10 @@ class EmployeesController extends Controller
         return view('employee.create');
     }
 
-    public function show(Employee $employee)
+    public function show($id)
     {
-        return view('employee.components.employees', [
-            'employees' => Employee::where('id', '=', $employee->id)
-                ->get(),
-        ]);
+        $employee = Employee::find($id);
+        return view('employee.components.employee', compact('employee'));
     }
 
     public function update(EmployeeRequest $request, Employee $employee)
@@ -58,7 +54,7 @@ class EmployeesController extends Controller
 
     public function destroy(Employee $employee)
     {
-        DB::table('employees')->delete($employee->id);
+        $employee->delete();
         return redirect('/')->with('success', 'Success!');
     }
 

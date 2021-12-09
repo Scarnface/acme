@@ -24,7 +24,6 @@ class DatabaseSeeder extends Seeder
         Company::factory(10)->create()->each(function ($company) {
             Employee::factory(100)->create([
                 'company_id' => $company->id,
-                'company' => $company->name
             ]);
         });
     }
