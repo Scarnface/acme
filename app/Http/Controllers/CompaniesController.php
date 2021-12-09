@@ -19,7 +19,7 @@ class CompaniesController extends Controller
         }
         else {
             return view('company.components.companies', [
-                'companies' => Company::paginate(3),
+                'companies' => Company::paginate(10),
             ]);
         }
     }

@@ -5,7 +5,7 @@
 
     <x-company-toolbar></x-company-toolbar>
 
-    <div class="flex justify-content-center mb-6">
+    <div class="flex flex-wrap justify-content-center mb-6">
         @foreach ($companies as $company)
             <x-company :company="$company"></x-company>
         @endforeach
