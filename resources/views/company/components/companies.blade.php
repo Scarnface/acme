@@ -11,9 +11,11 @@
         @endforeach
     </div>
 
-    <div class="mb-20">
-        {{ $companies->links() }}
-    </div>
+    @if ($companies instanceof \Illuminate\Pagination\LengthAwarePaginator)
+        <div class="mb-20">
+            {{ $companies->links() }}
+        </div>
+    @endif
 
     <a class="text-lg text-red-800 hover:text-gray-500" href="{{ route('home') }}">Return to dashboard</a>
 

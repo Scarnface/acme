@@ -24,7 +24,7 @@ class CompaniesController extends Controller
         }
     }
 
-    public function store(CompanyRequest $request, Company $company)
+    public function store(CompanyRequest $request)
     {
         $validatedData = $request->validated();
         $validatedData['logo'] = request()->file('logo')->store('logos');
@@ -42,7 +42,7 @@ class CompaniesController extends Controller
     {
         return view('company.components.companies', [
             'companies' => Company::where('id', '=', $company->id)
-                ->paginate(3),
+                ->get(),
         ]);
     }
 

@@ -27,7 +27,7 @@ class EmployeesController extends Controller
         }
     }
 
-    public function store(EmployeeRequest $request, Employee $employee)
+    public function store(EmployeeRequest $request)
     {
         $validatedData = $request->validated();
         Employee::create($validatedData);
@@ -44,7 +44,7 @@ class EmployeesController extends Controller
     {
         return view('employee.components.employees', [
             'employees' => Employee::where('id', '=', $employee->id)
-                ->paginate(3),
+                ->get(),
         ]);
     }
 

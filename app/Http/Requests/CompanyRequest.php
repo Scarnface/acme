@@ -31,8 +31,8 @@ class CompanyRequest extends FormRequest
         return [
             'name' => 'required',
             'email' => 'required|email|unique:companies',
-            'logo' => 'required|image',
-            'website' => 'required|unique:companies'
+            'logo' => 'required|image|dimensions:min_width=100,min_height=100',
+            'website' => 'required|url|unique:companies'
         ];
     }
 
@@ -41,8 +41,8 @@ class CompanyRequest extends FormRequest
         return [
             'name' => 'required',
             'email' => 'required|email|unique:companies,email,' .$this->route()->company->id,
-            'logo' => 'required|image',
-            'website' => 'required|unique:companies,website,'.$this->route()->company->id
+            'logo' => 'image|dimensions:min_width=100,min_height=100',
+            'website' => 'required|url|unique:companies,website,'.$this->route()->company->id
         ];
     }
 }
