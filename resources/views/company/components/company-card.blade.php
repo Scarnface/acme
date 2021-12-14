@@ -1,7 +1,12 @@
 <div class="card card-custom mx-4">
-    <div class="card-header font-bold text-2xl">
-        <a href="{{ route('company.show', $company) }}"
-           class="text-red-800 hover:text-gray-500">{{ ucwords($company->name) }}</a>
+    <div class="card-header flex align-items-center font-bold text-2xl">
+        @if(Route::current()->getName() != 'company.show')
+            <a href="{{ route('company.show', $company) }}"
+               class="text-red-800 hover:text-gray-500">{{ ucwords($company->name) }}
+            </a>
+        @else
+            <h3 class="mb-0">{{ ucwords($company->name) }}</h3>
+        @endif
     </div>
 
     <div class="card-body flex flex-wrap justify-content-center align-content-center w-full pb-4">

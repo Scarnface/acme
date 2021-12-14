@@ -1,15 +1,17 @@
 <div class="card col-span-6">
-    <div class="card-header flex font-bold text-xl">
-        <a href="{{ route('employee.show', $employee) }}"
-           class="text-red-800 hover:text-gray-500">
-            {{ ucwords($employee->first_name) . ' ' . ucwords($employee->last_name) }}
-        </a>
-
+    <div class="card-header flex align-items-center font-bold text-xl">
+        @if(Route::current()->getName() != 'employee.show')
+            <a href="{{ route('employee.show', $employee) }}"
+               class="text-red-800 hover:text-gray-500">
+                {{ ucwords($employee->first_name) . ' ' . ucwords($employee->last_name) }}
+            </a>
+        @else
+            <h3 class="mb-0">{{ ucwords($employee->first_name) . ' ' . ucwords($employee->last_name) }}</h3>
+        @endif
         <div class="flex ml-auto">
-            <form action="{{ route('employee.edit', $employee)}}" method="GET">
-                @csrf
+            <a href="{{ route('employee.edit', $employee) }}">
                 <input class="btn btn-dark mr-6" type="submit" value="EDIT" />
-            </form>
+            </a>
             <form action="{{ route('employee.destroy', $employee)}}" method="POST">
                 @method('DELETE')
                 @csrf

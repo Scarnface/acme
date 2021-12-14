@@ -28,9 +28,9 @@ class EmployeesController extends Controller
     public function store(EmployeeRequest $request)
     {
         $validatedData = $request->validated();
-        Employee::create($validatedData);
+        $employee = Employee::create($validatedData);
 
-        return redirect('/')->with('success', 'Success!');
+        return redirect(route('employee.show', $employee))->with('success', 'Success!');
     }
 
     public function create()
@@ -38,9 +38,8 @@ class EmployeesController extends Controller
         return view('employee.create');
     }
 
-    public function show($id)
+    public function show(Employee $employee)
     {
-        $employee = Employee::find($id);
         return view('employee.components.employee', compact('employee'));
     }
 
@@ -49,7 +48,7 @@ class EmployeesController extends Controller
         $validatedData = $request->validated();
         $employee->update($validatedData);
 
-        return redirect('/')->with('success', 'Success!');
+        return redirect(route('employee.show', $employee))->with('success', 'Success!');
     }
 
     public function destroy(Employee $employee)

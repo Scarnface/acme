@@ -27,9 +27,9 @@ class CompaniesController extends Controller
     {
         $validatedData = $request->validated();
         $validatedData['logo'] = request()->file('logo')->store('logos');
-        Company::create($validatedData);
+        $company = Company::create($validatedData);
 
-        return redirect('/')->with('success', 'Success!');
+        return redirect(route('company.show', $company))->with('success', 'Success!');
     }
 
     public function create()
@@ -37,9 +37,8 @@ class CompaniesController extends Controller
         return view('company.create');
     }
 
-    public function show($id)
+    public function show(Company $company)
     {
-        $company = Company::find($id);
         return view('company.components.company', compact('company'));
     }
 
@@ -49,7 +48,7 @@ class CompaniesController extends Controller
         $validatedData['logo'] = request()->file('logo')->store('logos');
         $company->update($validatedData);
 
-        return redirect('/')->with('success', 'Success!');
+        return redirect(route('company.show', $company))->with('success', 'Success!');
     }
 
     public function destroy(Company $company)

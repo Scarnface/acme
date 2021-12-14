@@ -7,7 +7,7 @@
 
     <div class="lg:grid lg:grid-cols-6">
         @foreach ($employees as $employee)
-            @include('employee.components.elist')
+            @include('employee.components.employee-card')
         @endforeach
     </div>
 
