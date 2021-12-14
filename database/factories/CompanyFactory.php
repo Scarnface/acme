@@ -17,7 +17,7 @@ class CompanyFactory extends Factory
             'name' => $this->faker->unique()->word(),
             'email' => $this->faker->unique()->email(),
             'logo' => 'logos\logoipsum-logo-8.svg',
-            'website' => $this->faker->unique()->domainName(),
+            'website' => 'https://' . $this->faker->unique()->domainName(),
         ];
     }
 }
