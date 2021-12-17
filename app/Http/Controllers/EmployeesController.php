@@ -54,7 +54,7 @@ class EmployeesController extends Controller
     public function destroy(Employee $employee)
     {
         $employee->delete();
-        return redirect('/')->with('success', 'Success!');
+        return redirect('/employees')->with('success', 'Success!');
     }
 
     public function edit(Employee $employee)

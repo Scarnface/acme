@@ -54,7 +54,7 @@ class CompaniesController extends Controller
     public function destroy(Company $company)
     {
         $company->delete();
-        return redirect('/')->with('success', 'Success!');
+        return redirect('/companies')->with('success', 'Success!');
     }
 
     public function edit(Company $company)
